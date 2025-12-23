@@ -1,6 +1,7 @@
 import { Github, ExternalLink, Play, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 interface ProjectCardProps {
   title: string;
@@ -40,14 +41,127 @@ export const ProjectCard = ({
     if (isModalOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     };
   }, [isModalOpen]);
 
   const embedUrl = videoUrl ? getYouTubeEmbedUrl(videoUrl) : null;
+
+  const modalContent = (
+    <div 
+      className="fixed inset-0 flex items-center justify-center p-4"
+      style={{ zIndex: 9999 }}
+    >
+      {/* Blurred Background Overlay */}
+      <div 
+        className="fixed inset-0 bg-black/80 backdrop-blur-md"
+        onClick={() => setIsModalOpen(false)}
+      />
+
+      {/* Modal Content - 70% of screen */}
+      <div
+        className="relative bg-card border border-border rounded-2xl shadow-2xl overflow-hidden"
+        style={{ 
+          width: '70vw', 
+          height: '70vh',
+          minWidth: '320px',
+          minHeight: '400px',
+          maxWidth: '1400px',
+          maxHeight: '900px',
+          zIndex: 10000
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={() => setIsModalOpen(false)}
+          className="absolute top-4 right-4 z-10 p-2 bg-background/90 border border-border rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        <div className="flex flex-col lg:flex-row h-full">
+          {/* Left Side - Video/Image */}
+          <div className="w-full lg:w-1/2 h-[40%] lg:h-full bg-black flex-shrink-0">
+            {embedUrl ? (
+              <iframe
+                src={embedUrl}
+                title={`${title} Video`}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <img
+                src={image}
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+            )}
+          </div>
+
+          {/* Right Side - Content */}
+          <div className="w-full lg:w-1/2 h-[60%] lg:h-full p-6 lg:p-8 overflow-y-auto">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-gradient">
+              {title}
+            </h2>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-md font-mono"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Full Description */}
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-3 text-foreground">
+                About This Project
+              </h3>
+              <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                {fullDescription}
+              </p>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-3 pt-4 border-t border-border">
+              <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="default" className="gap-2">
+                  <Github className="h-4 w-4" />
+                  View Code
+                </Button>
+              </a>
+              {liveUrl && (
+                <a href={liveUrl} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="gap-2">
+                    <ExternalLink className="h-4 w-4" />
+                    View Live
+                  </Button>
+                </a>
+              )}
+              {videoUrl && !embedUrl && (
+                <a href={videoUrl} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="gap-2">
+                    <Play className="h-4 w-4" />
+                    Watch Video
+                  </Button>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -112,108 +226,8 @@ export const ProjectCard = ({
         </div>
       </div>
 
-      {/* Modal Overlay */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          {/* Blurred Background Overlay */}
-          <div 
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-            onClick={() => setIsModalOpen(false)}
-          />
-
-          {/* Modal Content - 70% of screen */}
-          <div
-            className="relative bg-card border border-border rounded-2xl shadow-2xl animate-scale-in z-10 overflow-hidden"
-            style={{ width: '70vw', height: '70vh' }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 z-20 p-2 bg-background/90 border border-border rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              <X className="h-5 w-5" />
-            </button>
-
-            <div className="flex flex-col lg:flex-row h-full">
-              {/* Left Side - Video/Image */}
-              <div className="w-full lg:w-1/2 h-[40%] lg:h-full bg-black flex-shrink-0">
-                {embedUrl ? (
-                  <iframe
-                    src={embedUrl}
-                    title={`${title} Video`}
-                    className="w-full h-full"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                ) : (
-                  <img
-                    src={image}
-                    alt={title}
-                    className="w-full h-full object-cover"
-                  />
-                )}
-              </div>
-
-              {/* Right Side - Content */}
-              <div className="w-full lg:w-1/2 h-[60%] lg:h-full p-6 lg:p-8 overflow-y-auto">
-                <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-gradient">
-                  {title}
-                </h2>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-md font-mono"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Full Description */}
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3 text-foreground">
-                    About This Project
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                    {fullDescription}
-                  </p>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex flex-wrap gap-3 pt-4 border-t border-border">
-                  <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Button variant="default" className="gap-2">
-                      <Github className="h-4 w-4" />
-                      View Code
-                    </Button>
-                  </a>
-                  {liveUrl && (
-                    <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="gap-2">
-                        <ExternalLink className="h-4 w-4" />
-                        View Live
-                      </Button>
-                    </a>
-                  )}
-                  {videoUrl && !embedUrl && (
-                    <a href={videoUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="gap-2">
-                        <Play className="h-4 w-4" />
-                        Watch Video
-                      </Button>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Modal - Rendered via Portal to ensure it's on top of everything */}
+      {isModalOpen && createPortal(modalContent, document.body)}
     </>
   );
 };
