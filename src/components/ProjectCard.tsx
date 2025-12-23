@@ -114,34 +114,35 @@ export const ProjectCard = ({
 
       {/* Modal Overlay */}
       {isModalOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          onClick={() => setIsModalOpen(false)}
-        >
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
           {/* Blurred Background Overlay */}
-          <div className="absolute inset-0 bg-background/60 backdrop-blur-md" />
+          <div 
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => setIsModalOpen(false)}
+          />
 
           {/* Modal Content - 70% of screen */}
           <div
-            className="relative w-[90vw] md:w-[70vw] h-[85vh] md:h-[70vh] overflow-auto bg-card border border-border rounded-2xl shadow-2xl animate-scale-in z-10"
+            className="relative bg-card border border-border rounded-2xl shadow-2xl animate-scale-in z-10 overflow-hidden"
+            style={{ width: '70vw', height: '70vh' }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 z-20 p-2 bg-background/90 border border-border rounded-full hover:bg-muted transition-colors"
+              className="absolute top-4 right-4 z-20 p-2 bg-background/90 border border-border rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
             >
               <X className="h-5 w-5" />
             </button>
 
-            <div className="flex flex-col md:flex-row h-full">
+            <div className="flex flex-col lg:flex-row h-full">
               {/* Left Side - Video/Image */}
-              <div className="w-full md:w-1/2 bg-secondary flex-shrink-0">
+              <div className="w-full lg:w-1/2 h-[40%] lg:h-full bg-black flex-shrink-0">
                 {embedUrl ? (
                   <iframe
                     src={embedUrl}
                     title={`${title} Video`}
-                    className="w-full h-64 md:h-full"
+                    className="w-full h-full"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -150,14 +151,14 @@ export const ProjectCard = ({
                   <img
                     src={image}
                     alt={title}
-                    className="w-full h-64 md:h-full object-cover"
+                    className="w-full h-full object-cover"
                   />
                 )}
               </div>
 
               {/* Right Side - Content */}
-              <div className="w-full md:w-1/2 p-6 md:p-8 overflow-auto">
-                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gradient">
+              <div className="w-full lg:w-1/2 h-[60%] lg:h-full p-6 lg:p-8 overflow-y-auto">
+                <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-gradient">
                   {title}
                 </h2>
 
