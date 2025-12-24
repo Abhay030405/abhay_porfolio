@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Terminal } from "lucide-react";
+import { ChevronDown, Terminal, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const HeroSection = () => {
@@ -13,7 +13,7 @@ export const HeroSection = () => {
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Terminal Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full mb-8 animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full mb-12 animate-fade-in">
             <Terminal className="h-4 w-4 text-primary" />
             <span className="text-sm font-mono text-muted-foreground">
               <span className="text-code-green">$</span> Hello, World!
@@ -21,18 +21,18 @@ export const HeroSection = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             Hi, I'm{" "}
             <span className="text-gradient">Abhay Agarwal</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             B.Tech Electrical Engineering | 2nd Year
           </p>
 
           {/* Tagline */}
-          <div className="font-mono text-lg md:text-xl mb-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+          <div className="font-mono text-lg md:text-xl mb-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <span className="text-code-yellow">const</span>{" "}
             <span className="text-code-orange">passion</span>{" "}
             <span className="text-muted-foreground">=</span>{" "}
@@ -41,7 +41,7 @@ export const HeroSection = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+          <div className="flex flex-col sm:flex-row mb-1 items-center justify-center gap-11 animate-fade-in" style={{ animationDelay: '0.8s' }}>
             <Link to="/projects">
               <Button variant="glow" size="lg">
                 View My Work
@@ -52,6 +52,12 @@ export const HeroSection = () => {
                 Get In Touch
               </Button>
             </Link>
+            <a href="/resume.pdf" download="Abhay_Agarwal_Resume.pdf">
+              <Button variant="outline" size="lg" className="gap-2">
+                <Download className="h-5 w-5" />
+                Download Resume
+              </Button>
+            </a>
           </div>
         </div>
 

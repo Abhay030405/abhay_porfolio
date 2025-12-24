@@ -3,8 +3,8 @@ import { ExternalLink } from "lucide-react";
 const profiles = [
   {
     name: "GitHub",
-    username: "@abhayagarwal",
-    url: "https://github.com",
+    username: "@Abhay030405",
+    url: "https://github.com/Abhay030405",
     color: "from-[#2ea44f] to-[#238636]",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current">
@@ -14,8 +14,8 @@ const profiles = [
   },
   {
     name: "LeetCode",
-    username: "@abhayagarwal",
-    url: "https://leetcode.com",
+    username: "@absolutabhay",
+    url: "https://leetcode.com/u/absolutabhay",
     color: "from-[#ffa116] to-[#ff8c00]",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current">
@@ -25,8 +25,8 @@ const profiles = [
   },
   {
     name: "Codeforces",
-    username: "@abhayagarwal",
-    url: "https://codeforces.com",
+    username: "@absolutabhay",
+    url: "https://codeforces.com/profile/absolutabhay",
     color: "from-[#1890ff] to-[#096dd9]",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current">
@@ -36,8 +36,8 @@ const profiles = [
   },
   {
     name: "Kaggle",
-    username: "@abhayagarwal",
-    url: "https://kaggle.com",
+    username: "@abhayondata",
+    url: "https://kaggle.com/abhayondata",
     color: "from-[#20beff] to-[#0089c7]",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current">
@@ -47,8 +47,8 @@ const profiles = [
   },
   {
     name: "LinkedIn",
-    username: "@abhayagarwal",
-    url: "https://linkedin.com",
+    username: "@abhay-agarwal",
+    url: "https://www.linkedin.com/in/abhay-agarwal-8563352b1/",
     color: "from-[#0a66c2] to-[#004182]",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current">
@@ -69,7 +69,7 @@ export const CodingProfiles = () => {
               {"// Coding Profiles"}
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Where I <span className="text-gradient">Code</span>
+              Where I <span className="text-gradient">Code</span> and <span className="text-gradient">Connect</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Check out my profiles across different platforms where I solve problems and contribute to open source.

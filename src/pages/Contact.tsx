@@ -139,10 +139,10 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold mb-1">Email</h3>
                         <a
-                          href="mailto:abhay.agarwal@example.com"
+                          href="mailto:officialabhay030405@gmail.com"
                           className="text-muted-foreground hover:text-primary transition-colors"
                         >
-                          abhay.agarwal@example.com
+                          officialabhay030405@gmail.com
                         </a>
                       </div>
                     </div>
@@ -163,7 +163,7 @@ const Contact = () => {
                   <h3 className="text-xl font-bold mb-4">Follow Me</h3>
                   <div className="flex gap-4">
                     <a
-                      href="https://github.com"
+                      href="https://github.com/Abhay030405"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-4 bg-card border border-border rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
@@ -171,7 +171,7 @@ const Contact = () => {
                       <Github className="h-6 w-6" />
                     </a>
                     <a
-                      href="https://linkedin.com"
+                      href="https://www.linkedin.com/in/abhay-agarwal-8563352b1/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-4 bg-card border border-border rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"

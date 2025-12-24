@@ -30,17 +30,28 @@ export const AboutSection = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-mono mb-4">
+            <p className="text-center"><span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-mono mb-4">
               {"// About Me"}
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            </span></p>
+            <h2 className="text-center text-3xl md:text-5xl font-bold mb-6">
               Passionate About{" "}
               <span className="text-gradient">Innovation</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              I'm an Electrical Engineering student with a burning passion for AI and Machine Learning. 
-              I love turning complex problems into elegant solutions using cutting-edge technology.
-            </p>
+            <p className="text-lg text-muted-foreground max-w-6xl mx-auto">
+I build systems that reason, adapt, and refuse to break. Code is just the medium — logic is the weapon.<br/>
+I’m a <b>B.Tech Electrical Engineering student</b> who deliberately stepped beyond my domain into AI, Machine Learning, and deep problem-solving. I’m drawn to hard problems: the ones that don’t have clean solutions, the ones that expose weak thinking. That’s where I operate best.
+
+I don’t learn passively. I engineer. I train models, design AI agents, deploy FastAPI backends, experiment with MLOps pipelines, and push ideas all the way to production. When results fall short, I dissect the system, optimize the math, and rebuild until it performs. Failure isn’t a blocker — it’s a diagnostic signal.
+
+My work is driven by an obsession with quantitative thinking, speed, and precision. Whether it’s competitive programming, data-driven modeling, or system-level design, I focus on building things that actually work under pressure.<br/>
+
+The objective is non-negotiable:
+create intelligent, high-performance systems and earn a seat among elite tech.
+
+I don’t chase hype.
+I compound skill, execution, and discipline — daily.
+</p>
+
           </div>
 
           {/* Interest Cards */}

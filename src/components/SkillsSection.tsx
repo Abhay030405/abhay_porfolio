@@ -1,15 +1,15 @@
 const skillCategories = [
   {
     title: "Programming Languages",
-    skills: ["Python", "C++", "JavaScript", "TypeScript", "SQL"],
+    skills: ["Python", "C++", "Java", "SQL"],
   },
   {
-    title: "AI & Machine Learning",
-    skills: ["TensorFlow", "PyTorch", "Scikit-learn", "Keras", "OpenCV"],
+    title: "Machine Learning & Deep Learning",
+    skills: ["TensorFlow", "PyTorch", "Scikit-learn", "Keras", "XGBoost", "Transformers"],
   },
   {
-    title: "Deep Learning",
-    skills: ["CNNs", "RNNs", "LSTMs", "Transformers", "GANs"],
+    title: "Artificial Intelligence",
+    skills: ["LangChain", "LangGraph", "NLP"],
   },
   {
     title: "Data Science",
@@ -20,8 +20,8 @@ const skillCategories = [
     skills: ["Git", "Docker", "AWS", "Google Colab", "Kaggle"],
   },
   {
-    title: "Concepts",
-    skills: ["NLP", "Computer Vision", "Neural Networks", "Data Analysis", "MLOps"],
+    title: "Key Concepts",
+    skills: ["Computer Vision", "Neural Networks", "Data Analysis", "MLOps", "FastAPI"],
   },
 ];
 
@@ -44,17 +44,17 @@ export const SkillsSection = () => {
           </div>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
             {skillCategories.map((category, categoryIndex) => (
               <div
                 key={category.title}
-                className="p-6 bg-card border border-border rounded-xl"
+                className="p-7 bg-card border border-border rounded-xl"
                 style={{ animationDelay: `${categoryIndex * 0.1}s` }}
               >
                 <h3 className="text-lg font-semibold mb-4 text-primary font-mono">
                   {`> ${category.title}`}
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
