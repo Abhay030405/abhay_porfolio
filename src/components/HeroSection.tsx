@@ -52,7 +52,7 @@ export const HeroSection = () => {
                 Get In Touch
               </Button>
             </Link>
-            <a href="/resume.pdf" download="Abhay_Agarwal_Resume.pdf">
+            <a href="/resume_abhay.pdf" download="Abhay_Agarwal_Resume.pdf">
               <Button variant="outline" size="lg" className="gap-2">
                 <Download className="h-5 w-5" />
                 Download Resume

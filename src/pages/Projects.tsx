@@ -101,7 +101,7 @@ const Projects = () => {
                     {"// My Work"}
                   </span>
                 </div>
-                <a href="/resume.pdf" download="Abhay_Agarwal_Resume.pdf">
+                <a href="/resume_abhay.pdf" download="Abhay_Agarwal_Resume.pdf">
                   <Button variant="outline" size="sm" className="gap-2">
                     <Download className="h-4 w-4" />
                     Resume
